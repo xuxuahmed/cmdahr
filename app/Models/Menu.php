@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     //Function for submenu
-    public function submenus(){
-
+    public function submenus()
+    {
+        return $this->hasMany('App\Models\Submenu');
     }
 }
