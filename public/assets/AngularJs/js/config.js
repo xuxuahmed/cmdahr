@@ -47,6 +47,79 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
                 url: '/personnel-attendance',
                 templateUrl: 'assets/AngularJs/views/personnel-attendance.html'
             })
+             .state ('personnel.overtime', {
+                url: '/overtime',
+                templateUrl: 'assets/AngularJs/views/overtime.html'
+            })
+             .state ('personnel.leave-stat', {
+                url: '/leave-stat',
+                templateUrl: 'assets/AngularJs/views/leave-stat.html'
+            })
+           
+              .state ('personnel.salary-slip', {
+                url: '/salary-slip',
+                templateUrl: 'assets/AngularJs/views/salary-slip.html'
+            })
+
+            .state ('personnel.history', {
+                url: '/history',
+                templateUrl: 'assets/AngularJs/views/history.html'
+            })
+//------------------------------
+            // MANAGEMENT
+            //------------------------------
+            .state ('management', {
+                url: '/management',
+                templateUrl: 'assets/AngularJs/views/common-2.html'
+            })
+
+            .state('management.employee-info', {
+                url: '/employee-information',
+                templateUrl: 'assets/AngularJs/views/employee-information.html'
+            })
+
+            .state('management.leave-request', {
+                url: '/leave-request',
+                templateUrl: 'assets/AngularJs/views/leave-request.html'
+            })
+
+            .state('management.employee-group-manager', {
+                url: '/employee-group-manager',
+                templateUrl: 'assets/AngularJs/views/employee-group-manager.html'
+            })
+
+
+//------------------------------
+            // SUPERVISE
+            //------------------------------
+            .state ('supervise', {
+                url: '/supervise',
+                templateUrl: 'assets/AngularJs/views/common-2.html'
+            })
+
+            .state('supervise.authorise-overtime', {
+                url: '/authorise-overtime',
+                templateUrl: 'assets/AngularJs/views/authorise-overtime.html'
+            })
+            .state('supervise.approve-leave-request', {
+                url: '/approve-leave-request',
+                templateUrl: 'assets/AngularJs/views/approve-leave-request.html'
+            })
+//------------------------------
+            // PAYROLL
+            //------------------------------
+            .state ('payroll', {
+                url: '/payroll',
+                templateUrl: 'assets/AngularJs/views/payroll.html'
+            })
+//------------------------------
+            // REPORTS
+            //------------------------------
+            .state ('reports', {
+                url: '/reports',
+                templateUrl: 'assets/AngularJs/views/reports.html'
+            })
+
             //------------------------------
             // HEADERS
             //------------------------------

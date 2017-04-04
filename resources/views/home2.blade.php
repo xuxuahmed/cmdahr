@@ -23,7 +23,7 @@
     </head>
        
 
-<header id="header" data-current-skin={{mactrl.currentSkin}} data-ng-include="'assets/AngularJs/template/header.html'" data-ng-controller="headerCtrl as hctrl"></header>
+<header id="header" data-current-skin=@{{mactrl.currentSkin}} data-ng-include="'assets/AngularJs/template/header.html'" data-ng-controller="headerCtrl as hctrl"></header>
 
 <section id="main">
     <aside id="sidebar" data-ng-include="'assets/AngularJs/template/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
@@ -125,6 +125,7 @@
         <script src="assets/AngularJs/js/app.js"></script>
         <script src="assets/AngularJs/js/config.js"></script>
         <script src="assets/AngularJs/js/controllers/main.js"></script>
+        <script src="assets/AngularJs/js/controllers/attendance.js"></script>
         <script src="assets/AngularJs/js/services.js"></script>
         <script src="assets/AngularJs/js/templates.js"></script>
         <script src="assets/AngularJs/js/controllers/ui-bootstrap.js"></script>
