@@ -130,6 +130,7 @@
         <script src="assets/AngularJs/js/templates.js"></script>
         <script src="assets/AngularJs/js/controllers/ui-bootstrap.js"></script>
         <script src="assets/AngularJs/js/controllers/table.js"></script>
+     
 
 
         <!-- Template Modules -->

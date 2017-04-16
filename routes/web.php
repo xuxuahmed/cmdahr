@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('menus', 'MenuController');
+Route::resource('individuals','IndividualController');
+Route::get('checkinout/{month?}/{year?}', [
+    'as' => 'checkinout.index',
+    'uses' => 'CheckinoutController@index'
+]);
+Route::resource('checkinout', 'CheckinoutController', ['except' => ['index']]);

@@ -1,7 +1,6 @@
 materialAdmin.config(function ($stateProvider, $urlRouterProvider){
         $urlRouterProvider.otherwise("/home");
 
-
         $stateProvider
         
             //------------------------------
@@ -45,7 +44,9 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
 
             .state ('personnel.attendance', {
                 url: '/personnel-attendance',
-                templateUrl: 'assets/AngularJs/views/personnel-attendance.html'
+                templateUrl: 'assets/AngularJs/views/personnel-attendance.html',
+                controller: 'attCtrl'
+
             })
              .state ('personnel.overtime', {
                 url: '/overtime',
