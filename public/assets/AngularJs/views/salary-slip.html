@@ -1,1 +1,32 @@
-Salary Slip
+    <div class="card">
+        <div  class="card-header">
+
+            <h2>My Salary Slip</h2>
+            <hr>
+            <h5>Record Card Number </h5>
+            <h5>Designation </h5><hr>  
+            <h5>Select Month/Year </h5>                       
+        </div>
+
+        <div class="card-body card-padding">
+        
+        <div class="table-responsive">
+            <table  class="table table-striped">
+                
+                <tbody>
+                    <tr ng-repeat="emp in dates" ng-class="{'off-day': record['duty-time'] == '<< OFF >>'}">
+                    
+                        
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>

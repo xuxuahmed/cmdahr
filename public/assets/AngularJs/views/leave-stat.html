@@ -1,1 +1,46 @@
-Leave Statistics page
+    <div class="card">
+        <div  class="card-header">
+
+            <h2>Leave Statistics</h2>
+            <hr>
+            <h5>Record Card Number </h5>
+            <h5>Designation </h5><hr>                         
+        </div>
+
+        <div class="card-body card-padding">
+        
+        <div class="table-responsive">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                     <th>Year Start </th>
+                        <th>Year End </th>
+                        <th>Annual </th>
+                        <th>Medical/ Sick </th>
+                        <th>Family </th>
+                        <th>Absents</th>
+                        <th>Maternity</th>
+                        <th>Paternity</th>
+                        <th>Cirumstance</th>
+                        <th>No-Pay</th>
+                        <th>Hajj</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in dates" ng-class="{'off-day': record['duty-time'] == '<< OFF >>'}">
+                    
+                        
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        <td>{{  }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>

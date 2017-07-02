@@ -15,7 +15,7 @@
 
         <ul class="main-menu">
             <li>
-                <a data-ui-sref="profile.profile-about" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-account"></i> View Profile</a>
+                <a data-ui-sref="profile.profile-about" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-account"></i> View Profiles</a>
             </li>
             <!--<li>
                 <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
@@ -29,32 +29,28 @@
         </ul>
     </div>
 
-
-
-
-
+<!-- 
     <ul ng-repeat="menus in menu" class="main-menu"> 
     
        <li   data-ui-sref-active="active">
-            <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)">
-                <i class="{{menus.class}}"></i> {{menus.menu_name}}</a> 
+             
 
                <li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('personnel') }">
-                <a href="" toggle-submenu><i class="{{menus.class}}"></i> {{menus.menu_name}}</a>
+                <a href="" toggle-submenu><i class="{{menus.class}}"></i> {{menus.name}}</a>
 
-            <ul>
-                <li><a data-ui-sref-active="active" data-ui-sref="personnel.attendance" data-ng-click="mactrl.sidebarStat($event)">{{menus.submenus.subMenuName}}</a></li>
+            <ul >
+                <li><a data-ui-sref-active="active" data-ui-sref="{{menu.submenus.includes}}" data-ng-click="mactrl.sidebarStat($event)">{{menu.submenus.name}}</a></li>
                 
                 
             </ul>
         </li>
                              
-        </li>
+        </li> -->
         
 
 
 
-       <!--<li data-ui-sref-active="active">
+       <li data-ui-sref-active="active">
             <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)">
                 <i class="zmdi zmdi-home"></i> Home</a>               
         </li>
@@ -97,7 +93,7 @@
         <li data-ui-sref-active="active">
             <a data-ui-sref="reports" data-ng-click="mactrl.sidebarStat($event)">
                 <i class="zmdi zmdi-collection-item"></i> Reports</a>
-        </li>-->
+        </li>
         
         <!--=================-->
         <!--<li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('headers') }">

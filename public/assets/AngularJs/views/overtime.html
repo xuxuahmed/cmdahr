@@ -1,1 +1,44 @@
-Overtime Page
+    <div class="card">
+        <div  class="card-header">
+
+            <h2>Staff Overtime View</h2>
+            <hr>
+            <h5>Record Card Number </h5>
+            <h5>Designation </h5><hr>
+            <h5>Select Month/Year </h5>   <hr>                
+        </div>
+     
+      
+        <div class="table-responsive">
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                     <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Duty Time</th>
+                        <th>Duration</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Auth</th>
+                        <th>Details</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in dates" ng-class="{'off-day': record['duty-time'] == '<< OFF >>'}">
+                    
+                        
+                        <td>1{{  }}</td>
+                        <td>1{{  }}</td>
+                        <td>1{{  }}</td>
+                        <td>1{{  }}</td>
+                        <td>1{{  }}</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>

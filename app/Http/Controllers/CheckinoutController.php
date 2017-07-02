@@ -7,7 +7,7 @@ use App\Individual;
 
 class CheckinoutController extends Controller
 {
-    //
+    
     public function index($month = null, $year = null)
     {
         $month = $month ? $month : date('m');
@@ -23,7 +23,8 @@ class CheckinoutController extends Controller
                     ->get();
 
         foreach($records as $index => $record) {
-            $date = date('Y-m-d', strtotime($record->checktime));
+            
+            $date = date('Y-m-d', strtotime($record->checktime));             
             $tempRecord['date'] = date('d M Y, D', strtotime($record->checktime));
             $tempRecord['duty-time'] = in_array(date('D', strtotime($record->checktime)), ["Fri", "Sat"]) ? '<< OFF >>' : '08:00 - 15:00';
             $tempRecord['penalty'] = 0.00;
@@ -38,10 +39,9 @@ class CheckinoutController extends Controller
                 $tempRecord['out'][] = date('H:i:s', strtotime($out->checktime));
             }
 
-            $response[$date] = $tempRecord;
+           $response[$date] = $tempRecord;           
         }
 
         return response()->json($response);
     }
-
 }

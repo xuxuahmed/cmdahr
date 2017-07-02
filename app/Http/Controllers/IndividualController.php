@@ -7,11 +7,28 @@ use App\Individual;
 
 class IndividualController extends Controller
 {
-     public function index()
+     public function getUser($rcd_no)
+    {
+
+        return Individual::select ("*") 
+                ->where ("RCN",$rcd_no)
+                ->get();
+    }
+
+   public function index()
     {        
 
-        return Individual::where('RCN', '=', "163")                
+        return Individual::where('RCN', '=', "136")                
                 ->limit(1000)
+                ->get();
+               
+    }
+
+    public function filterRCN($rcd_no)
+    {
+
+    	return Individual::select ("*") 
+                ->where ("RCN",$rcd_no)
                 ->get();
     }
 

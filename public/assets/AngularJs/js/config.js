@@ -7,6 +7,7 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             // HOME
             //------------------------------
 
+
             .state ('home', {
                 url: '/home',
                 templateUrl: 'assets/AngularJs/views/home.html',               
@@ -503,17 +504,20 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
         
             .state ('profile', {
                 url: '/profile',
-                templateUrl: 'assets/AngularJs/views/profile.html'
+                templateUrl: 'assets/AngularJs/views/profile.html',
+                   controller: 'indCtrl'
             })
         
             .state ('profile.profile-about', {
                 url: '/profile-about',
-                templateUrl: 'assets/AngularJs/views/profile-about.html'
+                templateUrl: 'assets/AngularJs/views/profile-about.html',
+                   controller: 'indCtrl', 
             })
         
             .state ('profile.profile-education', {
                 url: '/profile-education',
                 templateUrl: 'assets/AngularJs/views/profile-education.html',
+                   controller: 'indCtrl', 
                 resolve: {
                     loadPlugin: function($ocLazyLoad) {
                         return $ocLazyLoad.load ([
@@ -535,9 +539,9 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
                 }
             })
 
-            .state ('profile.profile-photos', {
-                url: '/profile-photos',
-                templateUrl: 'assets/AngularJs/views/profile-photos.html',
+            .state ('profile.profile-trainings', {
+                url: '/profile-trainings',
+                templateUrl: 'assets/AngularJs/views/profile-trainings.html',
                 resolve: {
                     loadPlugin: function($ocLazyLoad) {
                         return $ocLazyLoad.load ([
@@ -559,9 +563,9 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
                 }
             })
         
-            .state ('profile.profile-connections', {
-                url: '/profile-connections',
-                templateUrl: 'assets/AngularJs/views/profile-connections.html'
+            .state ('profile.profile-job', {
+                url: '/profile-job',
+                templateUrl: 'assets/AngularJs/views/profile-job.html'
             })
         
         

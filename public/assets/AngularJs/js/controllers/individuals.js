@@ -1,9 +1,16 @@
 materialAdmin
-.controller('attCtrl', ['$scope','$log','$http',
+.controller('indCtrl', ['$scope','$log','$http',
  function($scope,$log,$http){
 
-PhotoN
+$http.get("/individuals")
+        .then (function (response){
+            $scope.staff=response.data;
+ 
+          });
 
-
+ $http.get("/education")
+ 		.then(function(response){
+ 			$scope.edu=response.data;
+ 		})
 
  }]);
