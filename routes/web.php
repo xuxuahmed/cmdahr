@@ -27,6 +27,8 @@ Route::resource( 'holiday', 'holidayController');
 Route::resource( 'settings', 'settingsController');
 Route::resource('individuals','IndividualController');
 Route::resource('employment','employmentController');
+Route::resource('LeaveType','LeaveTypeController');
+Route::resource('design','desigController');
 
 
 Route::resource('checkinout','attendanceController');
@@ -96,7 +98,33 @@ Route::get('workingHoursCat/{year}/{category}', [
     'uses' => 'workingHoursController@workingHoursCat'
 ]);
 
+// Get Leaves of an employee within the selected year
 
+Route::get('leavetypes/', [
+    'as' => 'allLeaveTypes',
+    'uses' => 'LeaveTypeController@index'
+]);
+
+// Get Leaves between date1 and date2
+
+Route::get('LeaveBtw/{ind_ID}/{date1}/{date2}', [
+    'as' => 'leavesBetweenDates',
+    'uses' => 'leavesController@LeaveBtw'
+]);
+
+
+
+Route::get('countLeaves/{ind_ID}/{date1}/{date2}', [
+    'as' => 'countLeavesBtw',
+    'uses' => 'leavesController@countLeaves'
+]);
+
+
+// Get Designation changes over ther yaears
+Route::get('getService/{ind_ID}', [
+    'as' => 'ServiceYears',
+    'uses' => 'desigController@getService'
+]);
 
 
 

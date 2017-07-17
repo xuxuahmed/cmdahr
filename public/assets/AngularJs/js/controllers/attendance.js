@@ -21,7 +21,7 @@ materialAdmin
        
 
 // Get Current Month start date
-$http.get("/startMonth/" +$scope.currYear +"/"+$scope.currMonth)
+           $http.get("/startMonth/" +$scope.currYear +"/"+$scope.currMonth)
          
           .then(function(response){
             $scope.currStartDate = response.data;
@@ -58,7 +58,7 @@ $http.get("/startMonth/" +$scope.currYear +"/"+$scope.currMonth)
             var totalDaysInAttendanceMonth = daysRemainingInThisMonth+attendanceStartDate
             var attendanceDate = attendanceStartDate+'-'+thisMonth+'-'+thisYear;
 
-$scope.attendance=[];
+            $scope.attendance=[];
 // console.log("Days Reamining in this month is: " ,daysRemainingInThisMonth);
 // console.log("Total Days in this month is : " ,totalDaysInAttendanceMonth);
 // console.log("Attendance Date is : " ,attendanceDate);
@@ -69,10 +69,7 @@ $scope.attendance=[];
                
              //  $scope.attendance.push('listDate':listDate);
 
-                $scope.attendance.push({ 
-               "date" : listDate
-        
-    });
+                $scope.attendance.push({ "date" : listDate }); 
 
 
                 attendanceDate = moment(attendanceDate, "Do MM YYYY").add(1,'day').format('Do MM YYYY');
@@ -89,13 +86,14 @@ $scope.attendance=[];
                 };
 
 
-            };
+            }; // End of For Loop
+
             // console.log("Attendance Final: ", $scope.attendance);
 
           });
 
 
-
+//tableBody.innerHTML = tableBody.innerHTML + '<tr class="'+attendanceClass+'"><td>'+listDate+'</td><td>'+'N/A'+'</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td></tr>';
 
           //==============================
 
@@ -186,8 +184,8 @@ $scope.attendance=[];
 
         //====================================
 
-$scope.currentYear = $scope.currYear;
-$scope.currentMonth = $scope.currMonth;
+          $scope.currentYear = $scope.currYear;
+          $scope.currentMonth = $scope.currMonth;
 
 // console.log("New selected years is: ", $scope.currentYear);
 // console.log("New selected month is: ", $scope.currentMonth);
@@ -230,11 +228,12 @@ $scope.currentMonth = $scope.currMonth;
             var totalDaysInAttendanceMonth = daysRemainingInThisMonth+attendanceStartDate
             var attendanceDate = attendanceStartDate+'-'+thisMonth+'-'+thisYear;
 
-$scope.attendance=[];
+            $scope.attendance=[];
+
 // console.log("Days Reamining in this month is: " ,daysRemainingInThisMonth);
 // console.log("Total Days in this month is : " ,totalDaysInAttendanceMonth);
 // console.log("Attendance Date is : " ,attendanceDate);
-
+     
 
 
 
@@ -255,7 +254,7 @@ console.log("Current Date is: " , $scope.currentDate);
            
            });
         
-               
+     //################################################################################################          
              //  $scope.attendance.push('listDate':listDate);
 
                 $scope.attendance.push({ 
@@ -264,6 +263,8 @@ console.log("Current Date is: " , $scope.currentDate);
                "duty_time_start": $scope.workingHours[0].Start_time,
                "duty_time_end": $scope.workingHours[0].End_time,
                 "checkinout": $scope.check_in.checktime
+
+               //  tableBody.innerHTML = tableBody.innerHTML + '<tr><td>'+listDate+'</td><td>'+'N/A'+'</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td><td>Row 3</td></tr>';
 
         
     });

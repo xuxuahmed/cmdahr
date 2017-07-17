@@ -66,7 +66,7 @@
                 </thead>
 
                 <tbody id="tableBody">
-                    <tr ng-repeat = "att in attendance">                   
+                   <tr ng-repeat = "att in attendance">                   
                      
                         <td>{{att.date}}</td>
                         <td>{{att.duty_time_start}}-{{att.duty_time_end}}</td>
@@ -77,7 +77,8 @@
                         <td ida="in{{att.id}}">{{ record.out[1] || '-' }}</td>
                         <td>{{ record.in[2] || '-' }}</td>
                         <td>{{ record.out[2] || '-' }}</td>                        
-                    </tr>
+                    </tr> 
+               
                   
 
                 </tbody>

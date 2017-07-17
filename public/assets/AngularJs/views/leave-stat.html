@@ -6,9 +6,10 @@
             <h5>Record Card Number </h5>
             <h5>Designation </h5><hr>                         
         </div>
-
-        <div class="card-body card-padding">
         
+ {{service}}
+        <div class="card-body card-padding">
+       
         <div class="table-responsive">
             <table  class="table table-striped">
                 <thead>
@@ -28,12 +29,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="emp in dates" ng-class="{'off-day': record['duty-time'] == '<< OFF >>'}">
+                    <tr >
                     
                         
-                        <td>{{  }}</td>
-                        <td>{{  }}</td>
-                        <td>{{  }}</td>
+                        <td>{{ YearStart }}</td>
+                        <td>{{ YearEnd}}</td>
                         <td>{{  }}</td>
                         <td>{{  }}</td>
                         

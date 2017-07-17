@@ -85,11 +85,12 @@
         <script src="assets/AngularJs/js/config.js"></script>
         <script src="assets/AngularJs/js/controllers/main.js"></script>
         <script src="assets/AngularJs/js/controllers/attendance.js"></script>
-         <script src="assets/AngularJs/js/controllers/individuals.js"></script>
+        <script src="assets/AngularJs/js/controllers/individuals.js"></script>
         <script src="assets/AngularJs/js/services.js"></script>
         <script src="assets/AngularJs/js/templates.js"></script>
         <script src="assets/AngularJs/js/controllers/ui-bootstrap.js"></script>
         <script src="assets/AngularJs/js/controllers/table.js"></script>
+        <script src="assets/AngularJs/js/controllers/leaveStats.js"></script>
      
 
 

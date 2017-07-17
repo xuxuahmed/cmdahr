@@ -13,11 +13,29 @@ class leavesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function countLeaves($ind_ID,$date1,$date2)
+    {
+      
+      return leaves::selectcount('LPolicyID',('count(IndID)'),'LFromDT','LToDT')
+                ->wherebetween ('LFromDT', [$date1 ,$date2])
+                ->where ('IndID',$ind_ID)
+                ->groupBy ('LPolicyID')
+                ->get(); 
+    }
+
+  public function LeaveBtw($ind_ID,$date1,$date2)
+    {
+
+        return leaves::select ('LID','IndID','LFromDT','LToDT','LPolicyID','LDesc','DesigID') 
+                ->wherebetween ('LFromDT', [$date1 ,$date2])
+                ->where ('IndID',$ind_ID)
+                ->get(); 
+    }
 
     public function isLeave($ind_ID,$year)
     {
 
-        return leaves::select ("*") 
+        return leaves::select ('LID','IndID','LFromDT','LToDT','LPolicyID','LDesc','DesigID') 
                 ->where ('LFromDT','LIKE','%'.$year.'%')
                 ->where ('LToDt','LIKE','%'.$year.'%')
                 ->where ('IndID',$ind_ID)

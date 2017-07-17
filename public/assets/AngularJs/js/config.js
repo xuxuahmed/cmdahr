@@ -55,7 +55,8 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             })
              .state ('personnel.leave-stat', {
                 url: '/leave-stat',
-                templateUrl: 'assets/AngularJs/views/leave-stat.html'
+                templateUrl: 'assets/AngularJs/views/leave-stat.html',
+                controller: 'leaveCtrl'
             })
            
               .state ('personnel.salary-slip', {
