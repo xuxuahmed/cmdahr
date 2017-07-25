@@ -12,9 +12,21 @@ class salarymonthsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function salByMonths($date)
+    {
+         return salarymonths::select ('SalMonthID','SalMonthStartDate') 
+                ->where ('SalMonthStartDate','LIKE','%'.$date.'%')           
+                ->get();
+
+    }
+
     public function index()
     {
-        //
+         return salarymonths::select ("*") 
+                 
+                ->limit(1000)
+                ->get();
     }
 
     /**

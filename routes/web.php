@@ -29,12 +29,17 @@ Route::resource('individuals','IndividualController');
 Route::resource('employment','employmentController');
 Route::resource('LeaveType','LeaveTypeController');
 Route::resource('design','desigController');
-
-
+Route::resource('salarymaster','salarymasterController');
+Route::resource('salarymonths','salarymonthsController');
+Route::resource('finalSalary','finalsalaryController');
+Route::resource('design','desigController');
 Route::resource('checkinout','attendanceController');
-
-
 Route::resource('education','EducationController');
+Route::resource('office','officeController');
+
+
+//==================================
+
 Route::get('checkinout/{month?}/{year?}', [
     'as' => 'checkinout.index',
     'uses' => 'CheckinoutController@index'
@@ -43,7 +48,6 @@ Route::get('getWorkingHours/{year}', [
     'as' => 'routeWorkingHours',
     'uses' => 'workingHoursController@filterYear'
 ]);
-
 
 Route::get('getAttendanceYear/{year}/{uid}', [
     'as' => 'routeAttendanceYear',
@@ -126,6 +130,43 @@ Route::get('getService/{ind_ID}', [
     'uses' => 'desigController@getService'
 ]);
 
+// Salarymonths index
+Route::get('allSalary/', [
+    'as' => 'AllSalaryMonths',
+    'uses' => 'salarymonthsController@index'
+]);
+
+// Salaryby Year
+
+
+Route::get('allSalaryYear/{SalMonthStartDate}', [
+    'as' => 'AllSalaryYear',
+    'uses' => 'salarymonthsController@salByMonths'
+]);
+
+//Check salary for user exits for the the selected month
+Route::get('finalSalaryExists/{SalID}/{RCN}', [
+    'as' => 'finalSalaryCheck',
+    'uses' => 'finalsalaryController@checkExists'
+]);
+
+//get sum of all the salary for a given user
+Route::get('SumfinalSalary/{SalID}/{RCN}', [
+    'as' => 'sumAmountSalary',
+    'uses' => 'finalsalaryController@sumAmount'
+]);
+
+//userSalary($RCN)
+Route::get('userSalaryPost/{RCN}', [
+    'as' => 'UserSalaryPost',
+    'uses' => 'salaryMasterController@userSalary'
+]);
+
+//select Office($id) , selectOffice($id)
+Route::get('selectOffice/{id}', [
+    'as' => 'chooseOffice',
+    'uses' => 'officeController@selectOffice'
+]);
 
 
 Auth::routes();

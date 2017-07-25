@@ -1,37 +1,159 @@
 
+
+    <section id="content">
+
+        <div class="container">
             <div class="block-header">
-                <h2>Welcome to CMDA 33333</h2><br>     
-                               
-                  
+                <h2>Dashboard</h2> <br>                    
 
-                <div class="col-sm-6">
-                    <!-- Calendar -->
-                    <!--<div id="calendar-widget" data-full-calendar></div>-->
 
+            <div class="dash-widgets">
+                <div class="row">
                     
+                      
 
-                        <div class="card-body">
-                            <div class="listview">
-
-                                <a class="lv-item" href="" data-ng-repeat="w in rpctrl.rpResult.list">
-                                    <div class="media">
-                                        <div class="pull-left">
-                                            <img class="lv-img-sm" data-ng-src="img/profile-pics/{{ w.img }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="lv-title">{{ w.user }}</div>
-                                            <small class="lv-small">{{ w.text }}</small>
-                                        </div>
-                                    </div>
-                                </a>
+                    <div class="col-md-3 col-sm-6">
+                        <div id="pie-charts" class="dash-widget-item">
+                            <div class="bgm-orange">
+                                
 
                                 <div class="clearfix"></div>
 
-                                <a class="lv-footer" href=""></a>
+                                <div class="text-center p-20 m-t-22">
+                                   
+                                        <h3>Personnel</h3>                                       
+                                    
+                                </div>
                             </div>
+
+                            <div class="p-t-20 p-b-20 text-center">
+                               
+                                <h5 class="m-0 f-400"><a data-ui-sref="profile.profile-about" data-ng-click="mactrl.sidebarStat($event)">My Personnel File</a></h5>
+
+                                <br/>
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="personnel.attendance" data-ng-click="mactrl.sidebarStat($event)">Attendance</a></h5>
+
+                                <br/>
+                                  <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="personnel.overtime" data-ng-click="mactrl.sidebarStat($event)">Overtime</a></h5>
+
+                                <br/>
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="personnel.leave-stat" data-ng-click="mactrl.sidebarStat($event)">Leave Statistics</a></h5>
+
+                                <br/>
+                                  <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="personnel.salary-slip" data-ng-click="mactrl.sidebarStat($event)">Salary Slip</a></h5>
+
+                                <br/>
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="personnel.history" data-ng-click="mactrl.sidebarStat($event)">History</a></h5>
+
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+    <div class="col-md-3 col-sm-6">
+                        <div id="pie-charts" class="dash-widget-item">
+                            <div class="bgm-pink">
+                                
+
+                                <div class="clearfix"></div>
+
+                                <div class="text-center p-20 m-t-22">
+                                   
+                                        <h3>HR Management</h3>                                       
+                                    
+                                </div>
+                            </div>
+
+                            <div class="p-t-20 p-b-20 text-center">
+                               
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="management.employee-info" data-ng-click="mactrl.sidebarStat($event)">Employee Information Manager</a></h5>
+
+                                <br/>
+                                  <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="management.employee-group-manager" data-ng-click="mactrl.sidebarStat($event)">Employee Group Manager</a></h5>
+
+                                <br/>
+
+                                <h5 class="m-0 f-400"><a data-ui-sref="payroll" data-ng-click="mactrl.sidebarStat($event)">Payroll</a></h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div id="pie-charts" class="dash-widget-item">
+                            <div class="bgm-lime">
+                                
+
+                                <div class="clearfix"></div>
+
+                                <div class="text-center p-20 m-t-22">
+                                   
+                                        <h3>Supervise</h3>                                       
+                                    
+                                </div>
+                            </div>
+
+                            <div class="p-t-20 p-b-20 text-center">
+                               
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="supervise.authorise-overtime" data-ng-click="mactrl.sidebarStat($event)">Authorise Overtime</a></h5>
+
+                                <br/>
+                                  <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="supervise.approve-leave-request" data-ng-click="mactrl.sidebarStat($event)">Approve Leave Requests</a></h5>
+
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                  <div class="col-md-3 col-sm-6">
+                        <div id="pie-charts" class="dash-widget-item">
+                        
+                            <div class="bgm-green">
+                                
+
+                                <div class="clearfix"></div>
+
+                                <div class="text-center p-20 m-t-22">
+                                   
+                                        <h3>Reports</h3>                                       
+                                    
+                                </div>
+                            </div>
+
+                            <div class="p-t-20 p-b-20 text-center">
+                               
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="supervise.approve-leave-request" data-ng-click="mactrl.sidebarStat($event)">Daily Attendance</a></h5>
+
+                                <br/>
+                                  <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="supervise.approve-leave-request" data-ng-click="mactrl.sidebarStat($event)">Late and Absent Report</a></h5>
+
+                                <br/>
+
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="supervise.approve-leave-request" data-ng-click="mactrl.sidebarStat($event)">Employee on Leave</a></h5>
+
+                                <br/>
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="supervise.approve-leave-request" data-ng-click="mactrl.sidebarStat($event)">Attendance Statistics</a></h5>
+
+                                <br/>
+                                <h5 class="m-0 f-400"><a data-ui-sref-active="active" data-ui-sref="supervise.approve-leave-request" data-ng-click="mactrl.sidebarStat($event)"> Monthly Statistics</a></h5>
+
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+            </div> 
+
+            
+               
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+       
 

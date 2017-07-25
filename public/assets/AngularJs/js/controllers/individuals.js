@@ -11,6 +11,13 @@ $http.get("/individuals")
  $http.get("/education")
  		.then(function(response){
  			$scope.edu=response.data;
- 		})
+ 		});
+
+
+
+ $http.get("/education")
+ 		.then(function(response){
+ 			$scope.edu=response.data;
+ 		});
 
  }]);

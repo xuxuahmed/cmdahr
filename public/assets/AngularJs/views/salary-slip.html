@@ -3,30 +3,85 @@
 
             <h2>My Salary Slip</h2>
             <hr>
-            <h5>Record Card Number </h5>
-            <h5>Designation </h5><hr>  
-            <h5>Select Month/Year </h5>                       
+            <h5>Name: {{name}} </h5>
+            <h5>Record Card Number: {{RCN}} </h5>
+            <h5>Designation: </h5><hr>  
+            <h5>Select Month/Year: </h5> 
+        
         </div>
 
-        <div class="card-body card-padding">
+        <div class="card-body card-padding">            
+
+                <div class="col-sm-3">   
+                    <div class="form-group">
+                        <div class="fg-line"><lable> <strong> Month: </strong></lable>
+                            <div class="select"> 
+                                <select ng-change="submitVariables(currMonth.select)" class="form-control" ng-model="currMonth" ng-options="month as month for month in months">                       
+                      
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="col-sm-3"> 
+                    <div class="form-group">
+                        <div class="fg-line"><lable> <strong>Year : </strong></lable>
+                            <div class="select">
+                                <select ng-change="submitVariables(currYear.select)" class="form-control" ng-model="currYear" name ="currYear" ng-options="year as year for year in years"> </select>  
+                            </div>
+                        </div>
+                    </div> 
+                </div>          
+
+ 
+        <div class="col-sm-3"> 
+            <div class="form-group">
+                <div class="fg-line"> 
+                    <button ng-click ="submitVariables()" class="btn btn-primary">Submit</button>  
+                </div>
+            </div> 
+        </div> 
+    
+
+    </div>
+    <br><br><br>
+</div>
+
+
+
+<div class="card">
+        <div  class="card-header">
         
-        <div class="table-responsive">
+        </div>
+
+        <div class="card-body card-padding"> 
+
+    <div class="table-responsive">
             <table  class="table table-striped">
-                
-                <tbody>
-                    <tr ng-repeat="emp in dates" ng-class="{'off-day': record['duty-time'] == '<< OFF >>'}">
-                    
+                <thead>
+                    <tr>
+                     <th>Description</th>
+                        <th>Amount</th>
                         
-                        <td>{{  }}</td>
-                        <td>{{  }}</td>
-                        <td>{{  }}</td>
-                        <td>{{  }}</td>
-                        <td>{{  }}</td>
-                        
+                      
                     </tr>
+                </thead>
+
+                <tbody>
+                   <tr ng-repeat = "salary in sal">                   
+                     
+                        <td>{{salary.D}}</td>
+                        <td>{{salary.Amount}}</td> 
+
                 </tbody>
+                <tfoot> <tr><td>Total</td><td>0000</td></tr></tfoot>
             </table>
         </div>
-    </div>
+    
 
     </div>
+    <br><br><br>
+</div>
+
+

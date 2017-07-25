@@ -12,6 +12,19 @@ class salarymasterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
+    public function userSalary($SalID)
+    {
+
+
+        return salarymaster::select ("*") 
+              ->where ("SalID",$SalID)
+               ->get(); 
+    }
+
+
     public function index()
     {
         //

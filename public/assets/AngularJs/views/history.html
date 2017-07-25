@@ -1,3 +1,134 @@
-Staff Designation history <br>
-Staff allowance history <br>
-staff leave history <br>
+ <section id="content">
+                <div class="container">
+                    <div class="block-header">
+                        <h2>History </h2>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Staff Designation History</h2>
+                        </div>
+
+                        <div class="card-body card-padding">
+                            <p class="lead"></p>
+                            <div class="table-responsive">
+                            	<table class="table table-condensed">
+                            	<thead>                           		
+
+
+                            		<th>#</th>
+                            		<th>Office</th>
+                            		<th>Post</th>
+                            		<th>Salary</th>
+                            		<th>Assigned Date</th>
+                            		<th>Terminate Date</th>
+                            		<th>Chit Numbers</th>
+
+                            	</thead>
+                            	<tbody>
+
+                                
+                            		<tr ng-repeat = "office in history | orderBy : 'id'">
+                            			<td>{{r}} </td> 
+                            			<td> {{office.office}}   </td> 
+                            			<td> {{office.post}} {{office.post2}}</td>
+                            			<td> {{office.amount| number : 0}}  </td>
+                            			<td> {{office.assigned}} </td> 
+                            			<td> {{office.terminate}} </td> 
+                            			<td> {{office.chit}} </td> 
+
+                            		</tr>
+
+                            	</tbody>
+                            	</table> 
+
+
+                            </div>                           
+                        </div>
+                    </div>
+
+                      <div class="card">
+                        <div class="card-header">
+                            <h2>Staff Allowance History</h2>
+                        </div>
+
+                        <div class="card-body card-padding">
+                            <p class="lead"></p>
+                            <div class="table-responsive">
+                            	<table class="table table-condensed">
+                            	<thead>                           		
+
+
+                            		<th>#</th>
+                            		<th>Allowance</th>
+                            		<th>Amount</th>
+                            		<th>Assigned Date</th>
+                            		<th>Terminate Date</th>
+                            		<th>Chit Numbers</th>
+
+                            	</thead>
+                            	<tbody>
+                            		<tr>
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+
+                            		</tr>
+
+                            	</tbody>
+                            	</table> 
+
+
+                            </div>                                
+                        </div>
+                    </div>
+
+
+                      <div class="card">
+                        <div class="card-header">
+                            <h2>Staff Leaves History</h2>
+                        </div>
+
+                        <div class="card-body card-padding">
+                            <p class="lead"></p>
+                            <div class="table-responsive">
+                            	<table class="table table-condensed">
+                            	<thead>                           		
+
+
+                            		<th>#</th>
+                            		<th>Leaves</th>
+                            		<th>Leave Start</th>
+                            		<th>Leave End</th>
+                            		<th>Days</th>
+                            		<th>Description</th>
+                            	
+                            	</thead>
+                            	<tbody>
+                            		<tr>
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+                            			<td>  </td> 
+
+                            		</tr>
+
+                            	</tbody>
+                            	</table> 
+
+
+                            </div>                                 
+                        </div>
+                    </div>
+
+				</div>
+
+
+</section>

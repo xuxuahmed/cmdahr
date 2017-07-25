@@ -91,7 +91,10 @@
         <script src="assets/AngularJs/js/controllers/ui-bootstrap.js"></script>
         <script src="assets/AngularJs/js/controllers/table.js"></script>
         <script src="assets/AngularJs/js/controllers/leaveStats.js"></script>
-     
+        <script src="assets/AngularJs/js/controllers/salarySlip.js"></script>
+        <script src="assets/AngularJs/js/controllers/overtime.js"></script>
+        <script src="assets/AngularJs/js/controllers/payroll.js"></script>
+        <script src="assets/AngularJs/js/controllers/history.js"></script>
 
 
         <!-- Template Modules -->

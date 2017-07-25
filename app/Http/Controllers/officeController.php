@@ -2,25 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\desig;
+use App\office;
 use Illuminate\Http\Request;
 
-class desigController extends Controller
+class officeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
-  public function getService($Ind_ID)
+    public function selectOffice($id)
     {
-      //  return desig::select ("Desig_ID","Ind_ID","AssignedDate","EndDate","EmpSalary","Post_ID","OfficeID") 
-          return desig::select ("*") 
-            
-                ->where ('Ind_id',$Ind_ID)
-                ->get();   
+
+        return office::select("*")
+                ->where ('OfficeID',$id)
+                ->get(); 
+
     }
 
 
@@ -53,10 +51,10 @@ class desigController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\desig  $desig
+     * @param  \App\office  $office
      * @return \Illuminate\Http\Response
      */
-    public function show(desig $desig)
+    public function show(office $office)
     {
         //
     }
@@ -64,10 +62,10 @@ class desigController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\desig  $desig
+     * @param  \App\office  $office
      * @return \Illuminate\Http\Response
      */
-    public function edit(desig $desig)
+    public function edit(office $office)
     {
         //
     }
@@ -76,10 +74,10 @@ class desigController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\desig  $desig
+     * @param  \App\office  $office
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, desig $desig)
+    public function update(Request $request, office $office)
     {
         //
     }
@@ -87,10 +85,10 @@ class desigController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\desig  $desig
+     * @param  \App\office  $office
      * @return \Illuminate\Http\Response
      */
-    public function destroy(desig $desig)
+    public function destroy(office $office)
     {
         //
     }

@@ -10,7 +10,8 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
 
             .state ('home', {
                 url: '/home',
-                templateUrl: 'assets/AngularJs/views/home.html',               
+                templateUrl: 'assets/AngularJs/views/home.html', controller: 'menuCtrl' ,  
+                           
                 resolve: {
                     loadPlugin: function($ocLazyLoad) {
                         return $ocLazyLoad.load ([
@@ -51,7 +52,8 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             })
              .state ('personnel.overtime', {
                 url: '/overtime',
-                templateUrl: 'assets/AngularJs/views/overtime.html'
+                templateUrl: 'assets/AngularJs/views/overtime.html',
+                 controller: 'overtimeCtrl'
             })
              .state ('personnel.leave-stat', {
                 url: '/leave-stat',
@@ -61,12 +63,14 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
            
               .state ('personnel.salary-slip', {
                 url: '/salary-slip',
-                templateUrl: 'assets/AngularJs/views/salary-slip.html'
+                templateUrl: 'assets/AngularJs/views/salary-slip.html',
+                controller: 'salarySlipCtrl'
             })
 
             .state ('personnel.history', {
                 url: '/history',
-                templateUrl: 'assets/AngularJs/views/history.html'
+                templateUrl: 'assets/AngularJs/views/history.html',
+                controller: 'historyCtrl'
             })
 //------------------------------
             // MANAGEMENT
@@ -113,7 +117,8 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             //------------------------------
             .state ('payroll', {
                 url: '/payroll',
-                templateUrl: 'assets/AngularJs/views/payroll.html'
+                templateUrl: 'assets/AngularJs/views/payroll.html',
+                controller: 'payrollCtrl'
             })
 //------------------------------
             // REPORTS

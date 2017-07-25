@@ -12,6 +12,31 @@ class finalsalaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function sumAmount($salID,$RCN)    {
+
+             
+
+         
+               $t = finalsalary::select('salID','RCN',finalsalary::raw('SUM(Amount) as total'))
+              ->where ("salID",$salID)
+               ->where ("RCN",$RCN)
+                ->get();
+                return $t;
+
+           
+          
+              
+    }
+
+    public function checkExists($salID,$RCN) // Check Salary ID Exists
+    {
+       return finalsalary::select ("*") 
+               ->where ("salID",$salID)
+               ->where ("RCN",$RCN)
+               ->get(); 
+    }
+
     public function index()
     {
         //
