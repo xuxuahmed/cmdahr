@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\LeaveType;
+use App\chitAllowance;
 use Illuminate\Http\Request;
 
-class LeaveTypeController extends Controller
+class chitAllowanceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-  
+    
+    public function chitAllowanceInd($Ind_ID)
+    {
+         return chitAllowance::select ("*") 
+            
+                ->where ('indid',$Ind_ID)
+                ->get();   
+    }
+
 
     public function index()
     {
-           return LeaveType::select ("*") 
-                 
-                ->limit(1000)
-                ->get();
-    
+        //
     }
 
     /**
@@ -47,10 +51,10 @@ class LeaveTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\chitAllowance  $chitAllowance
      * @return \Illuminate\Http\Response
      */
-    public function show(LeaveType $leaveType)
+    public function show(chitAllowance $chitAllowance)
     {
         //
     }
@@ -58,10 +62,10 @@ class LeaveTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\chitAllowance  $chitAllowance
      * @return \Illuminate\Http\Response
      */
-    public function edit(LeaveType $leaveType)
+    public function edit(chitAllowance $chitAllowance)
     {
         //
     }
@@ -70,10 +74,10 @@ class LeaveTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\chitAllowance  $chitAllowance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LeaveType $leaveType)
+    public function update(Request $request, chitAllowance $chitAllowance)
     {
         //
     }
@@ -81,10 +85,10 @@ class LeaveTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\chitAllowance  $chitAllowance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LeaveType $leaveType)
+    public function destroy(chitAllowance $chitAllowance)
     {
         //
     }

@@ -1,0 +1,66 @@
+ <section id="content">
+                <div class="container">
+                    <div class="block-header">
+                        <h2>Classification List</h2>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header" >
+                         <ul class="actions m-t-20 hidden-xs">
+            <li class="dropdown" uib-dropdown>
+                <a href="" uib-dropdown-toggle>
+                    <i class="zmdi zmdi-more-vert"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <a href="">Add</a>
+                    </li>
+                    <li>
+                        <a href="">Edit</a>
+                    </li>
+                    <li>
+                        <a href="">Delete</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+                           
+                        </div>
+
+                        <div class="card-body card-padding">
+                            <p class="lead"></p>
+                            <div class="table-responsive">
+                            	<table class="table table-condensed">
+                            	<thead> 
+                            		<th>Order</th>
+                            		<th>Classification</th>
+                            		<th>Status</th>
+
+                            	</thead>
+                            	<tbody>
+
+                                <tr ng-repeat = "post in arrayPostClass | orderBy : 'PclassEng'" >
+                                
+                            		<td>   </td>
+                            			<td>{{post.PclassEng}}</td>
+                                        <td>{{post.active}}</td>
+                                       
+                            		</tr>
+
+                            	</tbody>
+                            	</table> 
+
+                            </div>                           
+                        </div>
+                    </div>
+
+				</div>
+
+
+	
+				
+
+
+</section>

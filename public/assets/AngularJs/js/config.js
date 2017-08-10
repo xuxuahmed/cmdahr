@@ -72,6 +72,50 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
                 templateUrl: 'assets/AngularJs/views/history.html',
                 controller: 'historyCtrl'
             })
+
+// MASTER 
+            //------------------------------
+            .state ('master', {
+                url: '/master',
+                templateUrl: 'assets/AngularJs/views/common-2.html'
+            })
+
+            .state('master.holiday-manager', {
+                url: '/holiday-manager',
+                templateUrl: 'assets/AngularJs/views/holiday-manager.html',
+                controller: 'holidayManagerCtrl'
+            })
+
+            .state('master.master-leaves', {
+                url: '/master-leaves',
+                templateUrl: 'assets/AngularJs/views/master-leaves.html',
+                controller: 'masterLeaveCtrl'
+
+            })
+
+            .state('master.master-allowance', {
+                url: '/master-allowance',
+                templateUrl: 'assets/AngularJs/views/master-allowance.html',
+                controller: 'masterAllowanceCtrl'
+            })
+
+             .state('master.master-structure', {
+                url: '/master-structure',
+                templateUrl: 'assets/AngularJs/views/master-structure.html',
+                controller: 'masterStructureCtrl'
+            })
+
+             .state('master.master-post', {
+                url: '/master-post',
+                templateUrl: 'assets/AngularJs/views/master-post.html',
+                controller: 'mastrPostCtrl'
+            })
+             .state('master.master-post-class', {
+                url: '/master-post-class',
+                templateUrl: 'assets/AngularJs/views/master-post-class.html',
+                controller: 'mastrPostClassCtrl'
+            })
+
 //------------------------------
             // MANAGEMENT
             //------------------------------
@@ -82,18 +126,21 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
 
             .state('management.employee-info', {
                 url: '/employee-information',
-                templateUrl: 'assets/AngularJs/views/employee-information.html'
+                templateUrl: 'assets/AngularJs/views/employee-information.html',
+                controller: 'empInfoCtrl'
             })
 
             .state('management.leave-request', {
                 url: '/leave-request',
                 templateUrl: 'assets/AngularJs/views/leave-request.html'
             })
-
-            .state('management.employee-group-manager', {
-                url: '/employee-group-manager',
-                templateUrl: 'assets/AngularJs/views/employee-group-manager.html'
+     
+            .state('management.management-groups-manager', {
+                url: '/management-groups-manager',
+                templateUrl: 'assets/AngularJs/views/management-group-roster.html',
+                controller: 'managementGroupsManagerCtrl'
             })
+
 
 
 //------------------------------

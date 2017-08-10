@@ -72,10 +72,15 @@
                    <tr ng-repeat = "salary in sal">                   
                      
                         <td>{{salary.D}}</td>
-                        <td>{{salary.Amount}}</td> 
+                        <td>{{salary.Amount | number:2}}</td> 
 
                 </tbody>
-                <tfoot> <tr><td>Total</td><td>0000</td></tr></tfoot>
+                <hr>
+                <tfoot> <tr ng-repeat = "salary in listTotal">
+
+                <td><h4><strong>Total</strong><h4></td>
+                <td><h4><strong><font color="#FF3300">{{salary.T}}</font></strong></h4>
+                </td></tr></tfoot>
             </table>
         </div>
     

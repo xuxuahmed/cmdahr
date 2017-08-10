@@ -2,25 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\LeaveType;
+use App\empAllowance;
 use Illuminate\Http\Request;
 
-class LeaveTypeController extends Controller
+class empAllowanceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-  
+   public function viewEmpAllowance($Ind_ID)
+   {
+
+        return empAllowance::select ("*") 
+        -> where ('IndID',$Ind_ID)
+        -> get();
+
+   }
 
     public function index()
     {
-           return LeaveType::select ("*") 
-                 
-                ->limit(1000)
-                ->get();
-    
+        //
     }
 
     /**
@@ -47,10 +50,10 @@ class LeaveTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\empAllowance  $empAllowance
      * @return \Illuminate\Http\Response
      */
-    public function show(LeaveType $leaveType)
+    public function show(empAllowance $empAllowance)
     {
         //
     }
@@ -58,10 +61,10 @@ class LeaveTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\empAllowance  $empAllowance
      * @return \Illuminate\Http\Response
      */
-    public function edit(LeaveType $leaveType)
+    public function edit(empAllowance $empAllowance)
     {
         //
     }
@@ -70,10 +73,10 @@ class LeaveTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\empAllowance  $empAllowance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LeaveType $leaveType)
+    public function update(Request $request, empAllowance $empAllowance)
     {
         //
     }
@@ -81,10 +84,10 @@ class LeaveTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\LeaveType  $leaveType
+     * @param  \App\empAllowance  $empAllowance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LeaveType $leaveType)
+    public function destroy(empAllowance $empAllowance)
     {
         //
     }

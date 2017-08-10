@@ -1,140 +1,195 @@
 materialAdmin
 .controller('historyCtrl', ['$scope','$log','$http',
  function($scope,$log,$http){
-    $scope.months=['Jan','Feb','Mar','Apr','May','Jun','Jul',
+      $scope.months=['Jan','Feb','Mar','Apr','May','Jun','Jul',
         'Aug','Sep','Oct','Nov','Dec'];
 
-
 // Get User information
-  $scope.user = [];// $http.get("/getUser/" +$scope.RCN )
-      $http.get("/getUser/136" )
+      $scope.user = [];// $http.get("/getUser/" +$scope.RCN )
+      $http.get("/getUser/163" )
         
-          .then(function(response){
-            $scope.user = response.data;
+      .then(function(response){
+          $scope.user = response.data;         
+          $scope.post=[];
+          $scope.history=[];
+          $scope.i=0;
+  listOffice =[]; 
 
-         
-    $scope.post=[];
-    $scope.history=[];
-    $scope.i=0;
-    // $scope.officeID =[];
-
-
+//  =========Designation History Details of the user
 // Get designation history : user service
-  $http.get("/getService/"+$scope.user[0].Ind_ID )
-        
-          .then(function(response)
-          {
+      $http.get("/getService/"+$scope.user[0].Ind_ID )        
+        .then(function(response)
+         {
             $scope.service = response.data;
-
-            //console.log("service is:  " , $scope.service);
- 
-
 // Iterate through the designation to find service details
-   angular.forEach($scope.service, function(services)
-    {  
-        
-       // console.log("value of i is: ", $scope.i);    
-     
-        var testDate = $scope.service[$scope.i]['AssignedDate'];
-        var AssignedDate = moment(testDate, "YYYY MM DD").format(' DD MMM YYYY');
-        var endDate = $scope.service[$scope.i]['EndDate'];
-        var terminateDate =moment(endDate, "YYYY MM DD").format(' DD MMM YYYY');
-     var salary = $scope.service[$scope.i]['EmpSalary'];
-        //console.log(" Post id ", $scope.service[$scope.i].Post_ID);
-       // console.log(" Desig id ", $scope.service[$scope.i].Desig_ID);
 
-    var DID= $scope.service[$scope.i].Desig_ID;
-     var chit= $scope.service[$scope.i].RefDoc;
-    var officeID1 = $scope.service[$scope.i]['OfficeID'];
-console.log("Office ID1 is: ", officeID1);
+            listDesignation =[];
+              var f =0;
 
-$http.get("/selectOffice/"+$scope.service[$scope.i].OfficeID)
-        
-          .then(function(response)
-          {
-              $scope.office = response.data;
-              $scope.officeName = $scope.office.AbrName; 
-
-          console.log("Office name ",    $scope.office ) ;
-            //  $scope.officeName = $scope.officeID[0].LOfficeName;
-             
+          angular.forEach($scope.service, function(services)
+          {   
+            var testDate = $scope.service[$scope.i]['AssignedDate'];
+            var AssignedDate = moment(testDate, "YYYY MM DD").format(' DD MMM YYYY');
+            var endDate = $scope.service[$scope.i]['EndDate'];
+            var terminateDate =moment(endDate, "YYYY MM DD").format(' DD MMM YYYY');
+            var salary = $scope.service[$scope.i]['EmpSalary'];
+            var DID= $scope.service[$scope.i].Desig_ID;
+            var chit= $scope.service[$scope.i].RefDoc;
+            var officeID1 = $scope.service[$scope.i]['OfficeID'];
             
-                                    
-              });  // 
+
+           
+      
+
+            $http.get("/selectOffice/"+officeID1)
+        
+            .then(function(response)
+            {
+                $scope.officeName = response.data; 
+
+                // console.log("Value in office name" ,$scope.officeName); 
 
 
-      $http.get("/userSalaryPost/"+$scope.service[$scope.i].Post_ID )
+            angular.forEach($scope.officeName, function(office)
+            {             
+        
+                listOffice.push({"name":($scope.officeName[0].AbrName)}); 
+                $scope.h = $scope.h+1;
+              
+
+            });// End of Angular ForEach office
+
+                                                                    
+            }); // End of selectOffice
+
+            $scope.h=0;
+            listPost =[];
+           
+
+            
+
+               officeABR =[];
+             console.log("value of post: ",(listPost[0]));
+              officeABR= listOffice;
+
+
+
+              // console.log("value in ABR: ", officeABR[0].name);
+
+            listDesignation.push({"assigned":(AssignedDate), 
+                               "terminate":(terminateDate),
+                               "salary":(salary)});
+
+            $scope.history.push({ "amount":(listDesignation[$scope.i].salary),
+                                  "no":($scope.i+1),
+                                  "assigned":(listDesignation[$scope.i].assigned),
+                                  "terminate":(listDesignation[$scope.i].terminate)}); 
+  
+ 
+
+$http.get("/userSalaryPost/"+$scope.service[$scope.i].Post_ID )
+        
+            .then(function(response)
+            {
+            //  console.log( "value of f " , f);
+                $scope.salaryPost = response.data;  
+                listPost.push({"post": ($scope.salaryPost[0].LName)})  ;
+                 
+               //$scope.age.splice(0,0,{childCount:"Child 1 Age"})
+
+               $scope.post.push({"post":($scope.salaryPost[0].LName)}) ;
+             
+            });// End of UserSalaryPost
+
+
+
+            console.log( "value of salary post" , $scope.post); 
+
+
+            $scope.i=$scope.i+1;
+
+
+   
+        });// End of Angular ForEach function services
+
+
+          
+
+
+          console.log("Values of history: ", $scope.history); 
+
+      }); // End of $http getService
+
+
+//=============Allowance Details=======================================================
+$scope.allowance=[];
+$scope.q =0;
+var temp;
+
+
+  // get all the allowance for an employee
+       $http.get("/viewEmpAllowance/"+$scope.user[0].Ind_ID )
         
           .then(function(response)
           {
-              $scope.salaryPost = response.data;
+              $scope.empAllow = response.data;
+             //  console.log("Employee allowance is: ", $scope.empAllow);
+
+          listAmount = [];
+          $scope.p =0;
 
 
 
-//////////////////////////////================
-
-            //  console.log("user salaryPost: ",$scope.salaryPost ) ;
-               $scope.history.push({"id":(DID),
-                                   "amount":(salary),
-                                   "post2":($scope.salaryPost[0].ClassNameL),
-                                   "post":($scope.salaryPost[0].LName),
-                                    "assigned":(AssignedDate),                                    
-                                    "terminate":(terminateDate),
-                                    "chit":(chit),
-                                    "office":($scope.officeName)
-                                     }
-                                    ); 
-      
-       });// End of UserSalaryPost
-
-
-      console.log("i before increment", $scope.i);
-  $scope.i=$scope.i+1;
- 
-
-    // console.log("i after increment", $scope.i);
-       }
-
-
-       );// End of Angular ForEach
-
-
-     console.log("Values of history: ", $scope.history); 
-     
-
-  // console.log("Values of salary post: ", $scope.post);
- 
-      var r =0;
-    
-
-angular.forEach($scope.history, function(value,key)
-    { 
-         
-        $scope.history.push({"no":(r)}); 
-
-            console.log("r: ", r);  
-             r=r+1;                   
-
-    } 
-
- );// End of Angular ForEach history
-
-      }); // End of getService
+        angular.forEach($scope.empAllow, function(value,key)
+        { 
+           
+            temp = $scope.empAllow[$scope.q]['Allow_ID'];  
+            var empAssignedDate = moment($scope.empAllow[$scope.q].FromDate, "YYYY MM DD").format(' DD MMM YYYY');
+            var empTermDate = moment($scope.empAllow[$scope.q].ToDate, "YYYY MM DD").format(' DD MMM YYYY'); 
 
        
+            listAmount.push({"amount":($scope.empAllow[$scope.q].amount),
+                          "remarks": ($scope.empAllow[$scope.q].Remarks)}); 
+
+            $http.get("/viewAllowance/"+temp )           
+        
+            .then(function(response)
+            { 
+
+                $scope.AllowanceName =  response.data;
+                listArray = [];
 
 
+        angular.forEach($scope.AllowanceName, function(AllowanceNames)
+        { 
+        // console.log("$scope.AllowanceName[0].AllowName", $scope.AllowanceName[0].AllowName);
 
+            listArray.push({"name":($scope.AllowanceName[0].AllowName)});
+
+       });// End of Angular ForEach history
+
+
+          $scope.allowance.push({"Name":(listArray[0].name),
+                                "Amount":(listAmount[$scope.p].amount),
+                                "remarks":(listAmount[$scope.p].remarks),
+                                "assigned":(empAssignedDate),
+                                "terminated":(empTermDate),"no":($scope.p+1)
+                                });           
+
+               $scope.p = $scope.p+1; 
+          }); 
+
+      // End of http get Veiw Allowance
+
+
+        $scope.q = $scope.q+1;   
+                                
+
+        });// End of Angular ForEach history            
+
+
+      });// End of View EmpAllowance  
  
-
     });  // End of get User
 
-
-
-
- }// End of Function Scope
-
-
-
-
- ]); // End of Material Admin
+ }]); // End of Material Admin

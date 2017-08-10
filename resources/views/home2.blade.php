@@ -28,7 +28,7 @@
 <section id="main">
     <aside id="sidebar" data-ng-include="'assets/AngularJs/template/sidebar-left.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
 
-    <aside id="chat" data-ng-include="'assets/AngularJs/template/chat.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.right === true }"></aside>
+   
 
     <section id="content">
         <div class="container">
@@ -95,7 +95,14 @@
         <script src="assets/AngularJs/js/controllers/overtime.js"></script>
         <script src="assets/AngularJs/js/controllers/payroll.js"></script>
         <script src="assets/AngularJs/js/controllers/history.js"></script>
-
+        <script src="assets/AngularJs/js/controllers/empInfo.js"></script>
+        <script src="assets/AngularJs/js/controllers/holidayManager.js"></script>
+        <script src="assets/AngularJs/js/controllers/leaveType.js"></script> 
+        <script src="assets/AngularJs/js/controllers/allowances.js"></script> 
+        <script src="assets/AngularJs/js/controllers/structure.js"></script> 
+        <script src="assets/AngularJs/js/controllers/post.js"></script> 
+        <script src="assets/AngularJs/js/controllers/postClass.js"></script> 
+        <script src="assets/AngularJs/js/controllers/roster_group.js"></script> 
 
         <!-- Template Modules -->
         <script src="assets/AngularJs/js/modules/template.js"></script>

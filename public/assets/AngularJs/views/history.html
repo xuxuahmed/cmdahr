@@ -29,8 +29,8 @@
 
                                 
                             		<tr ng-repeat = "office in history | orderBy : 'id'">
-                            			<td>{{r}} </td> 
-                            			<td> {{office.office}}   </td> 
+                            			<td> {{office.no}}   </td>
+                            			<td > </td> 
                             			<td> {{office.post}} {{office.post2}}</td>
                             			<td> {{office.amount| number : 0}}  </td>
                             			<td> {{office.assigned}} </td> 
@@ -55,7 +55,7 @@
                         <div class="card-body card-padding">
                             <p class="lead"></p>
                             <div class="table-responsive">
-                            	<table class="table table-condensed">
+                            	<table class="table table-condensed" >
                             	<thead>                           		
 
 
@@ -68,13 +68,13 @@
 
                             	</thead>
                             	<tbody>
-                            		<tr>
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
+                            		<tr ng-repeat="all in allowance">
+                            			<td> {{all.no}} </td> 
+                            			<td> {{all.Name}} </td> 
+                            			<td> {{all.Amount}} </td> 
+                            			<td>{{all.assigned}}  </td> 
+                            			<td> {{all.terminated}} </td> 
+                            			<td> {{all.remarks}} </td> 
                             			<td>  </td> 
 
                             		</tr>

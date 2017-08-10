@@ -1,0 +1,98 @@
+ <section id="content">
+                <div class="container">
+                    <div class="block-header">
+                        <h2>Holidays Managers </h2>
+
+
+
+
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header" >
+                         <ul class="actions m-t-20 hidden-xs">
+            <li class="dropdown" uib-dropdown>
+                <a href="" uib-dropdown-toggle>
+                    <i class="zmdi zmdi-more-vert"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <a href="">Add</a>
+                    </li>
+                    <li>
+                        <a href="">Edit</a>
+                    </li>
+                    <li>
+                        <a href="">Delete</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+                           <h2 ng-bind="currentYear"></h2>
+                        </div>
+
+
+
+
+                        <div class="card-body card-padding">
+                            <p class="lead"></p>
+                            <div class="table-responsive">
+                            	<table class="table table-striped">
+                            	<thead>                           		
+
+
+                            		<th>#</th>
+                            		<th>Date</th>
+                            		<th>Description</th>
+                            		
+
+                            	</thead>
+                            	<tbody>
+
+                                
+                            		<tr ng-repeat = "days in days">
+                            		<td> {{days.id}}   </td>
+                            			<td> {{days.date}}   </td>
+                            			<td >{{days.reason}} </td> 
+                            			 
+
+                            		</tr>
+
+                            	</tbody>
+                            	</table> 
+
+<div class="form-group">
+            <div class="fg-line">              
+             
+                <button ng-click ="submitVariables(currentYear)" class="btn btn-primary">Previous</button> 
+
+                <button ng-click ="submitCurrent()" class="btn btn-primary">Current</button> 
+
+            </div>
+
+        </div>
+                            </div>                           
+                        </div>
+                    </div>
+
+				</div>
+
+
+		<div class="form-group">
+            <div class="fg-line"> 
+                <lable><strong>Enter the year in the format DD-MMM-YYYY: </strong></lable>
+                <div class="input"> <input class="form-control" ng-model="AddDate"> </input></div><br><lable>
+
+                <strong>Enter the holiday reason or description: </strong></lable>
+                <div class="input"> <input class="form-control" ng-model="AddDate"> </input></div><br>
+                <button ng-click ="submitVariables(description)" class="btn btn-primary">Add</button>  
+
+            </div>
+        </div>
+
+				
+
+
+</section>

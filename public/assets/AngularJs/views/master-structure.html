@@ -1,0 +1,87 @@
+ <section id="content">
+                <div class="container">
+                    <div class="block-header">
+                        <h2>Structure List </h2>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header" >
+                         <ul class="actions m-t-20 hidden-xs">
+            <li class="dropdown" uib-dropdown>
+                <a href="" uib-dropdown-toggle>
+                    <i class="zmdi zmdi-more-vert"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <a href="">Add</a>
+                    </li>
+                    <li>
+                        <a href="">Edit</a>
+                    </li>
+                    <li>
+                        <a href="">Delete</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+                           
+                        </div>
+
+                        <div class="card-body card-padding">
+                            <p class="lead"></p>
+                            <div class="table-responsive">
+                            	<table class="table table-striped">
+                            	<thead> 
+                            		<th>Order</th>
+                            		<th>Post</th>
+                            		<th>Class</th>
+                                    <th>Salary</th>
+                                    <th>A1</th>
+                                    <th>V1</th>
+                                    <th>A2</th>
+                                    <th>V2</th>
+                                    <th>A3</th>
+                                    <th>V3</th>                                   
+                                    <th>Active</th>
+                            		
+
+                            	</thead>
+                            	<tbody>
+
+                                
+                            		<tr ng-repeat = "struct in arrayStruct">
+                            		<td> {{struct.id}}   </td>
+                            			<td>{{struct.LName}}</td>
+                                        <td>{{struct.ClassNameL}}</td>
+                                        <td>{{struct.Amount }}</td>
+                                        <td>{{struct.Allowance1}}</td>
+                                        <td>{{struct.a1amount}}</td>
+                                        <td>{{struct.A2}}</td>
+                                        <td>{{struct.a2amount}}</td>
+                                        <td>{{struct.A3}}</td>
+                                        <td>{{struct.a3amount}}</td>
+                                        <td>{{struct.active}}</td>
+                                        
+                            			
+                            			 
+
+                            		</tr>
+
+                            	</tbody>
+                            	</table> 
+
+
+                            </div>                           
+                        </div>
+                    </div>
+
+				</div>
+
+
+	
+				
+
+
+</section>

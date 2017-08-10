@@ -7,7 +7,7 @@
             <h5>Designation </h5><hr>                         
         </div>
         
- {{service}}
+ 
         <div class="card-body card-padding">
        
         <div class="table-responsive">
@@ -29,13 +29,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                    
+                    <tr ng-repeat = "year in staffD">                    
                         
-                        <td>{{ YearStart }}</td>
-                        <td>{{ YearEnd}}</td>
-                        <td>{{  }}</td>
-                        <td>{{  }}</td>
+                        <td>{{ year.year1 }}</td>
+                        <td>{{ year.year2}}</td>
+                        <td>{{ year.AL}}</td>
+                        <td>{{ year.SL }} <font color="#FF3300"></font></td>
                         
                     </tr>
                 </tbody>

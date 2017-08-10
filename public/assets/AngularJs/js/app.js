@@ -25,7 +25,7 @@ materialAdmin.controller('menuCtrl',['$scope','$log','$http',
       var subMenus=[]; 
     
   
- console.log($scope.subMenuArray );  
+ //console.log($scope.subMenuArray );  
           });
 
 

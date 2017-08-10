@@ -14,15 +14,25 @@ class holidayController extends Controller
      */
 
 
+  public function newHoliday($date,$reason)
+    {
+        
+     return holiday::all();
+        $date = Input::get('HolidayDate');
+        $reason = Input::get('HolidayReason');
+
+        $create = holiday::create(array(
+            'HolidayDate' => $date,
+            'HolidayReason' => $reason
+        ));       
+    }
+
 
     public function isHoliday($year)
     {
         return holiday::select ("*") 
                 ->where ('HolidayDate','LIKE','%'.$year.'%')
-                ->get();   
-
-      
-
+                ->get();
     }
 
     public function index()

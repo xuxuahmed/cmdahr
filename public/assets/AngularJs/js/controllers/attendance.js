@@ -100,16 +100,10 @@ materialAdmin
 
       $scope.updateTable = function () {
 
-
-
-
-
        $http.get('/getAttendanceYear/2017-03-02/81')
          
           .then(function(response){
-            $scope.records = response.data;
-
-          
+            $scope.records = response.data;          
 
           });
 
@@ -232,10 +226,7 @@ materialAdmin
 
 // console.log("Days Reamining in this month is: " ,daysRemainingInThisMonth);
 // console.log("Total Days in this month is : " ,totalDaysInAttendanceMonth);
-// console.log("Attendance Date is : " ,attendanceDate);
-     
-
-
+// console.log("Attendance Date is : " ,attendanceDate); 
 
               for (i = 0; i < totalDaysInAttendanceMonth; i++) {
                 var listDate = moment(attendanceDate, "Do MMM YYYY").format('Do MMM, YYYY, (dd)');

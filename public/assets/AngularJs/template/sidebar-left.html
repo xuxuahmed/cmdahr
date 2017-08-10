@@ -44,13 +44,34 @@
             </ul>
         </li>
 
+        <li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('master') }">
+            <a href="" toggle-submenu><i class="zmdi zmdi-book-image"></i> HR Master</a>
+
+            <ul>
+                <li><a data-ui-sref-active="active" data-ui-sref="master.holiday-manager" data-ng-click="mactrl.sidebarStat($event)">Holidays Manager</a></li>
+
+                <li><a data-ui-sref-active="active" data-ui-sref="master.master-leaves" data-ng-click="mactrl.sidebarStat($event)">Leaves</a></li>
+
+                <li><a data-ui-sref-active="active" data-ui-sref="master.master-allowance" data-ng-click="mactrl.sidebarStat($event)">Allowances</a></li>
+
+                <li><a data-ui-sref-active="active" data-ui-sref="master.master-structure" data-ng-click="mactrl.sidebarStat($event)">Structure</a></li>
+
+                <li><a data-ui-sref-active="active" data-ui-sref="master.master-post" data-ng-click="mactrl.sidebarStat($event)">Post List</a></li>
+
+                 <li><a data-ui-sref-active="active" data-ui-sref="master.master-post-class" data-ng-click="mactrl.sidebarStat($event)">Classification</a></li>
+
+                  
+            </ul>
+        </li>
+
         <li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('management') }">
             <a href="" toggle-submenu><i class="zmdi zmdi-collection-text"></i> HR Management</a>
 
             <ul>
                 <li><a data-ui-sref-active="active" data-ui-sref="management.employee-info" data-ng-click="mactrl.sidebarStat($event)">Employee Information Manager</a></li>
                 <li><a data-ui-sref-active="active" data-ui-sref="management.leave-request" data-ng-click="mactrl.sidebarStat($event)">Leave Request Approvals</a></li>
-                <li><a data-ui-sref-active="active" data-ui-sref="management.employee-group-manager" data-ng-click="mactrl.sidebarStat($event)">Employee Group Manager</a></li>
+           
+                <li><a data-ui-sref-active="active" data-ui-sref="management.management-groups-manager" data-ng-click="mactrl.sidebarStat($event)">Employee Groups Manager</a></li>
             </ul>
         </li>
         <li class="sub-menu" data-ng-class="{ 'active toggled': mactrl.$state.includes('supervise') }">

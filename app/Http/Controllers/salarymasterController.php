@@ -13,11 +13,13 @@ class salarymasterController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
-    public function userSalary($SalID)
+    public function likePost($post)
     {
 
+
+    }
+
+    public function userSalary($SalID)   {
 
         return salarymaster::select ("*") 
               ->where ("SalID",$SalID)
@@ -27,7 +29,9 @@ class salarymasterController extends Controller
 
     public function index()
     {
-        //
+         return salarymaster::select ("*") 
+              
+               ->get(); 
     }
 
     /**
