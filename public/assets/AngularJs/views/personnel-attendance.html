@@ -6,7 +6,7 @@
         </div>
 
         <div class="card-body card-padding">
-            <div class="row">
+<!--             <div class="row">
                <div class="col-sm-3"> 
                     <div class="form-group">
                         <div class="fg-line"> <lable><strong>Enter Record Card Number:</strong>  </lable>
@@ -15,13 +15,13 @@
                         </div>
                     </div> 
                 </div>
-            </div>
+            </div> -->
 
                 <div class="col-sm-3">   
                     <div class="form-group">
                         <div class="fg-line"><lable> <strong> Month: </strong></lable>
                             <div class="select"> 
-                                <select ng-change="submitVariables(currMonth.select)" class="form-control" ng-model="currMonth" ng-options="month as month for month in months">                       
+                                <select ng-change="loadValues()" class="form-control" ng-model="currMonth" ng-options="month as month for month in months">                       
                       
                                 </select>
                             </div>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <div class="fg-line"><lable> <strong>Year : </strong></lable>
                             <div class="select">
-                                <select ng-change="submitVariables(currYear.select)" class="form-control" ng-model="currYear" name ="currYear" ng-options="year as year for year in years"> </select>  
+                                <select ng-change="loadValues()" class="form-control" ng-model="currYear" name ="currYear" ng-options="year as year for year in years"> </select>  
                             </div>
                         </div>
                     </div> 
@@ -70,13 +70,13 @@
                      
                         <td>{{att.date}}</td>
                         <td>{{att.duty_time_start}}-{{att.duty_time_end}}</td>
-                        <td>{{ record.penalty }}</td>
-                        <td>{{ record.checktime }}</td>
-                        <td>{{ record.userid|| '-' }}</td>
-                        <td id="in{{att.id}}">{{ record.in[1] || '-' }}</td>
-                        <td ida="in{{att.id}}">{{ record.out[1] || '-' }}</td>
-                        <td>{{ record.in[2] || '-' }}</td>
-                        <td>{{ record.out[2] || '-' }}</td>                        
+                        <td></td>
+                        <td>{{ att.in1}}</td>
+                        <td>{{ att.out1}}</td>
+                         <td>{{ att.in2}}</td>
+                        <td>{{ att.out2}}</td>
+                         <td>{{ att.in3}}</td>
+                        <td>{{ att.out4}}</td>
                     </tr> 
                
                   

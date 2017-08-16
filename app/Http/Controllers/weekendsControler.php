@@ -25,6 +25,15 @@ class weekendsControler extends Controller
                 ->get();
 
 }
+
+
+public function BtwWeekend($date1, $date2)
+    {
+                return weekend::select ('Day1','Day2','year') 
+                ->wherebetween ('year', [$date1 ,$date2])             
+                ->get(); 
+    }
+
     public function index()
     {
         return weekend::select("*") 

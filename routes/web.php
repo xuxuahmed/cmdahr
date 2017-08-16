@@ -42,9 +42,7 @@ Route::resource('allowance', 'allowanceController');
 Route::resource('post', 'postController');
 Route::resource('postClass', 'postClassController');
 Route::resource('groupRoster', 'groupRosterController');
-
-
-
+Route::resource('staffTime', 'staffTimeController');
 
 //==================================
 // View employee groups list, group roster (allGroupRoster)
@@ -60,10 +58,30 @@ Route::get('allPostClass', [
     'uses' => 'postClassController@index'
 ]);
 
+// Get attendance between 2 dates--------------------------------
+Route::get('attendanceBtw/{rcn?}/{date1?}/{date2}', [
+    'as' => 'attendanceBetweenDates',
+    'uses' => 'attendanceController@btwAttendance'
+]);
+
+// Staff Log InOUt between 2 dates 
+Route::get('staffAttBtw/{rcn}/{date1}/{date2}', [
+    'as' => 'satffTimeBetweenDates',
+    'uses' => 'staffTimeController@btwAttendance'
+]);
+
+// Staff Log InOUt between 2 dates 
+Route::get('countAttBtw/{rcn}/{date1}', [
+    'as' => 'countAttDates',
+    'uses' => 'staffTimeController@countInOut'
+]);
+
+
 Route::get('checkinout/{month?}/{year?}', [
     'as' => 'checkinout.index',
     'uses' => 'CheckinoutController@index'
 ]);
+
 
 Route::get('getWorkingHours/{year}', [
     'as' => 'routeWorkingHours',
@@ -74,6 +92,13 @@ Route::get('getAttendanceYear/{year}/{uid}', [
     'as' => 'routeAttendanceYear',
     'uses' => 'attendanceController@filterYear'
 ]);
+
+// Staff Log IN OUT by a single date
+Route::get('getAttYear/{year}/{uid}', [
+    'as' => 'AttendanceStaffDate',
+    'uses' => 'staffTimeController@filterYear'
+]);
+
 
 Route::get('getUser/{RCN?}', [
     'as' => 'routeUser',
@@ -102,9 +127,25 @@ Route::get('weekendYear/{year}', [
     'uses' => 'weekendsControler@weekendYear'
 ]);
 
+// get weekends between 2 dates
+Route::get('btwWeekend/{date1}/{date2}', [
+    'as' => 'weekendBtwYear',
+    'uses' => 'weekendsControler@BtwWeekend'
+]);
+
+
+
 Route::get('isHoliday/{year}', [
     'as' => 'HolidaycurrentYear',
     'uses' => 'holidayController@isHoliday'
+]);
+
+// Get holidays between 2 dates
+
+
+Route::get('btwHoliday/{date1}/{date2}', [
+    'as' => 'Holiday2Dates',
+    'uses' => 'holidayController@BtwHoliday'
 ]);
 
 Route::get('isLeave/{ind_ID}/{year}', [
@@ -143,10 +184,11 @@ Route::get('LeaveBtw/{ind_ID}/{date1}/{date2}', [
 ]);
 
 
-Route::get('countLeaves/{ind_ID}/{date1}/{date2}', [
+Route::get('countLeaves/{ind_ID}/{date1}/{date2}/{id}', [
     'as' => 'countLeavesBtw',
     'uses' => 'leavesController@countLeaves'
 ]);
+
 
 Route::get('allLeaves/', [
     'as' => 'Typesofleaves',

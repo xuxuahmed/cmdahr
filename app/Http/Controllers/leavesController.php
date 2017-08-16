@@ -13,22 +13,23 @@ class leavesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function countLeaves($ind_ID,$date1,$date2)
+    public function countLeaves($ind_ID,$date1,$date2,$id)
     {
-      
-      return leaves::selectcount('LPolicyID',('count(IndID)'),'LFromDT','LToDT')
-                ->wherebetween ('LFromDT', [$date1 ,$date2])
+
+        return leaves::groupby('LFromDT')    
+              ->wherebetween ('LFromDT', [$date1 ,$date2])
                 ->where ('IndID',$ind_ID)
-                ->groupBy ('LPolicyID')
+              ->where('LPolicyID',$id)
                 ->get(); 
     }
+    
 
   public function LeaveBtw($ind_ID,$date1,$date2)
     {
 
         return leaves::select ('LID','IndID','LFromDT','LToDT','LPolicyID','LDesc','DesigID') 
                 ->wherebetween ('LFromDT', [$date1 ,$date2])
-                ->where ('IndID',$ind_ID)
+                ->where ('IndID',$ind_ID)          
                 ->get(); 
     }
 

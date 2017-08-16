@@ -41,7 +41,7 @@ class LeaveTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         
     }
 
     /**

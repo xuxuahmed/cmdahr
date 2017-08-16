@@ -1,170 +1,208 @@
 materialAdmin
-.controller('leaveCtrl', ['$scope','$log','$http',
- function($scope,$log,$http){
-    $scope.months=['Jan','Feb','Mar','Apr','May','Jun','Jul',
-        'Aug','Sep','Oct','Nov','Dec'];
-
-        $scope.user = [];
-
-//======== $http.get("/getUser/" +$scope.RCN )
-      $http.get("/getUser/163" )
-        
-          .then(function(response){
-            $scope.user = response.data;
-
-            $scope.RCN= $scope.user[0].RCN;
-            $scope.id =$scope.user[0].Ind_ID;
-         //   console.log("Individual id of user is: ", $scope.id);
-            staff = [];
+    .controller('leaveCtrl', ['$scope', '$log', '$http', 'user',
+        function($scope, $log, $http, user) {
+            $scope.user = user.data;
+            $scope.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+                'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            ];
+            var staff = [];
             $scope.employDate;
+            var today = moment(new Date()).format('DD MMM YYYY');
+            var employDetails = [];
+            var diff_years;
+            var listArray = [];
+            var getWeeekends = [];
+           function loadVariables(date1, date2){
 
-         
-//=====Find the total years of staff=========================
-
-  $http.get("/getEmployment/"+$scope.id).then(function(response){
-            $scope.employment = response.data;            
-           $scope.employDate = moment($scope.employment[0]['Employeddate']).format('DD MMM YYYY');    
-           
-           staff.push({"yearStart":$scope.employDate});
-          // console.log("staff is: ", staff);
-           var today = moment(new Date()).format ('DD MMM YYYY');
-
-  
+                 $http.get("/btwWeekend/"+date1+"/" + date2)
+                    .then(function(response) {
+                        $scope.weekend = response.data;
+                        console.log("Loaded weekends are: ", $scope.weekend);
 
 
-if(($scope.employment[0].ResignedDate) == null)
-      {
-          var Year1 = moment(today, "DD MMM YYYY").format("YYYY");
-          var Year2 = moment(staff[0].yearStart, "DD MMM YYYY").format("YYYY");
+                    });
 
-        //  console.log("Year 2 is: ", Year2);
-          diff_years = Year1 - Year2;
-          staff.push({"years":(diff_years)}) ;
-          dateList =[];
+                $http.get("/btwHoliday/"+date1+"/" + date2)
+                    .then(function(response) {
+                        $scope.holiday = response.data;
 
-          staffDetails =[];
-
-
-          var nextYear =  moment(staff[0].yearStart, "DD MMM YYYY").add(1,'year').format('DD MMM YYYY');
-          var firstYear = moment(staff[0].yearStart, "DD MMM YYYY").subtract(1,'year').format('DD MMM YYYY');     
-          var date0 = moment(staff[0].yearStart, "DD MMM YYYY").format('YYYY-MM-DD'); 
-        
-          var date2= moment(staff[0].yearStart, "DD MMM YYYY").add(1,'year').format('YYYY-MM-DD'); 
-         // console.log("date list is: ", dateList) ;
-
-leave_sum=[];
-sigma_Leaves =[];
-         var arr = [];
-
-
-console.log("Array is: ", arr);
-
-//staff[1].years
-var b = 0;
-
-$scope.iteration = 0;
-for (var q = 0; q <4; q++)
-{    
- 
-  $http.get("/LeaveBtw/"+$scope.user[0].Ind_ID+"/"+date0+"/"+date2)       
-          .then(function(response)
-{
-            $scope.leaves_btw = response.data;
-
-//======== count the sum of each leaves in a year===========  
-
-//************************************
-
-$http.get("/leavetypes/").then(function(response)
-{
-      $scope.leavesTypes = response.data;
-      var len_leavesTypes = ($scope.leavesTypes).length;
-      $scope.p =0;
-      var total =0;
-      var temp=0;
-      temp = len_leavesTypes-1;
-
-     angular.forEach($scope.leavesTypes, function(ltype)
-       { 
-            $scope.y = 0;
-            var amount =0;
-            var value;
-            val = ($scope.leaves_btw).length-1;
-
-       angular.forEach($scope.leaves_btw, function(leaves_btw){ 
-     
-       if( $scope.leaves_btw[$scope.y].LPolicyID == $scope.leavesTypes[$scope.p]['LPolicyID'])
-           {
-              leave_sum.push({"name":($scope.leavesTypes[$scope.p].EnglishName),"count":(amount)});
-              amount=amount+1;
+                    });
+                     
+                      getWeeekends =  $scope.weekend;
            }
 
-           console.log("value of $scope.iteration is : ", $scope.iteration);
- 
-        if($scope.y == val )
-        {         
-            console.log("value of y is : ", $scope.y);
-            console.log("value of val : ", val);
-            console.log("value of p : ", $scope.p);
-
-          sigma_Leaves.push({ "name":($scope.leavesTypes[$scope.p].EnglishName),
-            "LPolicyID":($scope.p),  "count":(amount)}); 
-              arr.push({"name":sigma_Leaves});     
-        }
-          $scope.y = $scope.y+1;
-     
-        }); 
-        console.log("value of y is after iteration : ", $scope.y);
-
-    if($scope.p == temp)
-      {
-        console.log("we are equal");
-        console.log("value of b is: ", b);
-     
-         staffDetails.push({"year1":dateList[b].Year1,
-          "year2":dateList[b].Year2,
-          "SL":sigma_Leaves[b+1].count
-          });         
-         
-            sigma_Leaves =[];     
-            b=b+1;
-       }     
-      
-         $scope.p = $scope.p+1;
-       
-        });// End of $http Leavetypes            
 
 
-      });// End of angular leavetypes
+            $http.get("/getEmployment/" + $scope.user[0].Ind_ID)
+                .then(function(response) {
+                    $scope.employment = response.data;
+                    $scope.employDate = moment($scope.employment[0]['Employeddate']).format('DD MMM YYYY');
+                    staff.push({
+                        "yearStart": $scope.employment[0].Employeddate
+                    });
 
-//************************************
-
-    }); // End of betweenDates
-
-          firstYear = moment(firstYear, "DD MMM YYYY").add(1,'year').format('DD MMM YYYY');    
-          nextYear =  moment(firstYear, "DD MMM YYYY").add(1,'year').format('DD MMM YYYY');
-          date0= moment(firstYear, "DD MMM YYYY").add(1,'year').format('YYYY-MM-DD');
-          date2= moment(nextYear, "DD MMM YYYY").add(1,'year').format('YYYY-MM-DD');
-          dateList.push({"Year1":firstYear,"Year2":nextYear}); 
-
-          console.log("First year istttt: " ,firstYear);
-          console.log("Next Year istttttt: ", nextYear); 
-          console.log("$scope.iteration: ", $scope.iteration);
-          console.log("arr: ", arr); 
-           console.log("staff details: " ,staffDetails); 
-            
-     $scope.iteration = $scope.iteration+1;
-    }// End of For loop
-
-    console.log("Date List: ", dateList);
-
- } // End if
- 
-  $scope.staffD=staffDetails;
-    }); // End of getEmployement 
+                    
 
 
+                    if (($scope.employment[0].ResignedDate) == null) {
 
- }); // End of getUser 
+                        var Year1 = moment(today, "DD MMM YYYY").format("YYYY");
+                        console.log("Year 1 is: ", Year1);
 
- }]); // End of Material Admin
+                        var Year2 = moment($scope.employment[0].Employeddate, "YYYY-MM-DD").format("YYYY");
+                        console.log("Year 2 is: ", Year2);
+
+
+                        diff_years = Year1 - Year2;
+
+
+                        console.log("Difference in years is: ", diff_years);
+
+                        var nextYear = moment($scope.employment[0].Employeddate, "YYYY-MM-DD").add(1, 'year').format('DD MMM YYYY');
+
+                        var firstYear = moment($scope.employment[0].Employeddate, "YYYY-MM-DD").format('DD MMM YYYY');
+
+                        // Leaves
+                        var date1 = moment($scope.employment[0].Employeddate, "YYYY-MM-DD").format('YYYY-MM-DD');
+                        var date2 = moment($scope.employment[0].Employeddate, "YYYY-MM-DD").add(1, 'year').format('YYYY-MM-DD');
+                        console.log(date1);
+                        console.log(date2);
+
+                        //  var d1=date1;
+                        // var d2 =date2;
+
+                        for (p = 0; p <2; p++) {
+
+                            var year = p;
+
+                            if (p == 0) {
+                                var d1 = date1;
+                                var d2 = date2;
+
+                                loadVariables(date1, date2);
+                                console.log("got weekeds: ", getWeeekends[0]);
+                                console.log("d1 is: ", d1);
+                                console.log("d2 is: ", d2);
+                                console.log("value of P is: ", p);
+                                getCount(year, d1, d2);
+                            }
+                            if (p != 0) {
+
+                                var d1 = moment(d1, "YYYY-MM-DD").add(1, 'year').format('YYYY-MM-DD');
+                                var d2 = moment(d2, "YYYY-MM-DD").add(1, 'year').format('YYYY-MM-DD');
+                                
+                                loadVariables(date1, date2);
+                                console.log("d1 is: ", d1);
+                                console.log("d2 is: ", d2);
+                                console.log("value of P is: ", p);
+                                getCount(year, d1, d2);
+
+
+                            }
+
+                        }
+
+                        function getCount(year, d1, d2) {
+
+                            $http.get("/leavetypes/")
+
+                            .then(function(response) {
+                                $scope.leaveTypes = response.data;
+
+                                // console.log("Leave Types: ", $scope.leavesTypes);
+
+                                var i = 0;
+
+                                angular.forEach($scope.leaveTypes, function(leavesTypes) {
+                                    var y = 0;
+
+                                    //  console.log("LeavesTypes Policy ID ", $scope.leaveTypes[i].LPolicyID);
+                                    var temp = $scope.leaveTypes[i].LPolicyID;
+                                   // console.log("value of temp is: ", temp);
+
+
+                                    $http.get("/countLeaves/" + $scope.user[0].Ind_ID + "/" + d1 + "/" + d2 + "/" + $scope.leaveTypes[i].LPolicyID)
+                                        .then(function(response) {
+
+                                            $scope.leaves = response.data;
+                                             
+
+
+
+
+                                            if ($scope.leaves.length != 0) {
+                                               
+                                                // if ($scope.leaves[y].LFromDT == $scope.leaves[y].LToDt) {
+
+
+                                                //     listArray.push({
+                                                //         "Leaves": $scope.leaves.length,
+                                                //         "LPolicyID": (temp),
+                                                //         "Name": ($scope.leaves[y].LDesc),
+                                                //         "year": (year)
+                                                //     });
+
+                                                // } // End of If
+
+                                               // if ($scope.leaves[y].LFromDT != $scope.leaves[y].LToDt) {
+                                                    var arraySize = $scope.leaves.length;
+                                                    console.log("$scope.leaves.length in not:", $scope.leaves.length);
+                                                    console.log("Leaves are for : ", $scope.leaves);
+                                                    var s = 0;
+                                                    var count =0;
+
+                                                    for (var h = 0; h < arraySize; h++) {
+
+                                                        var from = moment($scope.leaves[s].LFromDT, 'YYYY-MM-DD').startOf('day');
+                                                        var to = moment($scope.leaves[s].LToDt, 'YYYY-MM-DD').startOf('day');
+
+                                                        var duration1 = moment(to.diff(from));
+                                                        var one_day=1000*60*60*24;
+
+                                                        var days1= Math.round(duration1/one_day)+1;
+
+
+                                                        console.log("from is : ", from);
+                                                        console.log("to is: ", to);
+                                                         console.log("days1 : ", days1);
+
+
+
+                                                       
+                                                        count = count + days1;
+
+
+                                                        s++;
+
+                                                    } // End of for
+
+                                                     listArray.push({
+                                                            "Name": ($scope.leaves[y].LDesc),
+                                                            "Leaves": count,
+                                                            "LPolicyID": (temp),
+                                                            "year": (year)
+                                                        });
+                                                                                           
+
+
+                                            }
+
+                                        }); // End of getEmployment
+                                    
+                                    i++;
+                                });
+                               console.log("List Array ", listArray);
+
+                            }); // End of leaveTypes
+                            return;
+                        } // End of function
+
+                    }
+
+
+
+
+
+                }); // End of getEmployment
+        } // material function scope
+    ]); // End of Material Admin

@@ -47,8 +47,14 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             .state ('personnel.attendance', {
                 url: '/personnel-attendance',
                 templateUrl: 'assets/AngularJs/views/personnel-attendance.html',
-                controller: 'attCtrl'
-
+                controller: 'attCtrl',
+                resolve: {
+                    user: ['$http',
+                        function($http) {
+                            return $http.get("/getUser/163");
+                        }
+                    ]
+                }
             })
              .state ('personnel.overtime', {
                 url: '/overtime',
@@ -58,7 +64,15 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
              .state ('personnel.leave-stat', {
                 url: '/leave-stat',
                 templateUrl: 'assets/AngularJs/views/leave-stat.html',
-                controller: 'leaveCtrl'
+                controller: 'leaveCtrl',
+                resolve: {
+                    user: ['$http',
+                        function($http) {
+                            return $http.get("/getUser/163");
+                        }
+                    ]
+                }
+                
             })
            
               .state ('personnel.salary-slip', {

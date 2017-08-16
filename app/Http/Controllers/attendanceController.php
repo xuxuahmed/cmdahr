@@ -31,6 +31,15 @@ class attendanceController extends Controller
 
     }
 
+     public function btwAttendance($RCN,$date1,$date2)
+    {
+      
+    
+        return checkinout::select ('logid','checktime','sensorid','userno') 
+                ->wherebetween ('checktime', [$date1 ,$date2])
+                ->where ('userno',$RCN)
+                ->get();  
+    }
 
 
     public function filterYear($year,$uid)

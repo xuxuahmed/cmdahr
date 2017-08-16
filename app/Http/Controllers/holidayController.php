@@ -27,12 +27,22 @@ class holidayController extends Controller
         ));       
     }
 
+    public function BtwHoliday($date1, $date2)
+    {
+                return holiday::select ('HolidayID','HolidayDate','HolidayReason') 
+                ->wherebetween ('HolidayDate', [$date1 ,$date2])             
+                ->get(); 
+    }
+
 
     public function isHoliday($year)
     {
         return holiday::select ("*") 
-                ->where ('HolidayDate','LIKE','%'.$year.'%')
+                ->wherebetween ('HolidayDate','LIKE','%'.$year.'%')
                 ->get();
+
+
+                
     }
 
     public function index()
@@ -61,7 +71,18 @@ class holidayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'HolidayDate' => 'bail|required|unique:holiday',
+            'HolidayReason' => 'required',
+        ]);
+
+        $holidayDate = Input::get('HolidayDate');
+        $holidayReason = Input::get('HolidayReason');
+
+        $create = holiday::create(array(
+            'HolidayDate' =>  $holidayDate,
+            'HolidayReason' => $holidayReason
+        ));
     }
 
     /**
