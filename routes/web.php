@@ -76,6 +76,12 @@ Route::get('countAttBtw/{rcn}/{date1}', [
     'uses' => 'staffTimeController@countInOut'
 ]);
 
+// Staff Log InOUt in a single date 
+Route::get('getStaffInOut/{rcn}/{date1}', [
+    'as' => 'getStaffInOut1',
+    'uses' => 'staffTimeController@getStaffInOut'
+]);
+
 
 Route::get('checkinout/{month?}/{year?}', [
     'as' => 'checkinout.index',
@@ -151,6 +157,17 @@ Route::get('btwHoliday/{date1}/{date2}', [
 Route::get('isLeave/{ind_ID}/{year}', [
     'as' => 'leavecurrentYear',
     'uses' => 'leavesController@isLeave'
+]);
+
+
+
+
+
+// Get total leaves of an individual user
+
+Route::get('isLeaveInd/{ind_ID}', [
+    'as' => 'totalleaveUser',
+    'uses' => 'leavesController@isLeaveInd'
 ]);
 
 Route::get('getUser/{ind_ID}', [

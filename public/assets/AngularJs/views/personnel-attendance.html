@@ -41,8 +41,7 @@
             </div>
             <br><br> <br>
  
-<div class="col-sm-2"> 
-                    
+<div class="col-sm-2">                     
 
            <button ng-click ="submitVariables()" class="btn btn-primary">Submit</button>  <br>
 
@@ -69,14 +68,14 @@
                    <tr ng-repeat = "att in attendance">                   
                      
                         <td>{{att.date}}</td>
-                        <td>{{att.duty_time_start}}-{{att.duty_time_end}}</td>
+                        <td>{{att.dutyStart}}-{{att.dutyEnd}}</td>
                         <td></td>
-                        <td>{{ att.in1}}</td>
-                        <td>{{ att.out1}}</td>
-                         <td>{{ att.in2}}</td>
-                        <td>{{ att.out2}}</td>
-                         <td>{{ att.in3}}</td>
-                        <td>{{ att.out4}}</td>
+                        <td>{{ att.Log[0].Signing_DT | date:'hh:mm:ss a'}}</td>
+                        <td>{{ att.Log[1].Signing_DT}}</td>
+                         <td>{{ att.Log[2].Signing_DT}}</td>
+                        <td>{{ att.Log[3].Signing_DT}}</td>
+                         <td>{{ att.Log[4].Signing_DT}}</td>
+                        <td>{{ att.Log[5].Signing_DT}}</td>
                     </tr> 
                
                   

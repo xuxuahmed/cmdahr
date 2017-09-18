@@ -26,6 +26,17 @@ public function countInOut ($ind_id, $date1)
 
 }
 
+public function getStaffInOut ($ind_id, $date1)
+{
+
+
+    return staffTime::groupby('Signing_DT')
+     ->having( 'IndID','=',$ind_id)
+     ->where ('Signing_DT','LIKE','%'.$date1.'%')                 
+     ->get();
+
+}
+
 
   public function btwAttendance($RCN,$date1,$date2)
     {

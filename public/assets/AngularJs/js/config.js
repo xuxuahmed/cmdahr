@@ -84,7 +84,32 @@ materialAdmin.config(function ($stateProvider, $urlRouterProvider){
             .state ('personnel.history', {
                 url: '/history',
                 templateUrl: 'assets/AngularJs/views/history.html',
-                controller: 'historyCtrl'
+                controller: 'historyCtrl',
+                resolve: {
+                    user: ['$http',
+                        function($http) {
+                            return $http.get("/getUser/163");
+                        }
+
+                    ],
+
+                    leaveTypes:['$http',
+                        function($http) {
+                            return $http.get("/leavetypes");
+                        }],
+
+                        allLeaves:['$http',
+                        function($http) {
+                            return $http.get("/isLeaveInd/45");                            
+                
+                        }],
+
+                        employ:['$http',
+                        function($http) {
+                            return $http.get("/getEmployment/45");                            
+                
+                        }]
+                }
             })
 
 // MASTER 

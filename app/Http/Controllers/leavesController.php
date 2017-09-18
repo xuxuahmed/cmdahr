@@ -22,6 +22,8 @@ class leavesController extends Controller
               ->where('LPolicyID',$id)
                 ->get(); 
     }
+
+    
     
 
   public function LeaveBtw($ind_ID,$date1,$date2)
@@ -39,6 +41,14 @@ class leavesController extends Controller
         return leaves::select ('LID','IndID','LFromDT','LToDT','LPolicyID','LDesc','DesigID') 
                 ->where ('LFromDT','LIKE','%'.$year.'%')
                 ->where ('LToDt','LIKE','%'.$year.'%')
+                ->where ('IndID',$ind_ID)
+                ->get(); 
+    }
+
+    public function isLeaveInd($ind_ID)
+    {
+
+        return leaves::select ('LID','IndID','LFromDT','LToDT','LPolicyID','LDesc','DesigID')
                 ->where ('IndID',$ind_ID)
                 ->get(); 
     }

@@ -108,15 +108,16 @@
                             		<th>Description</th>
                             	
                             	</thead>
+
+                              
                             	<tbody>
-                            		<tr>
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
-                            			<td>  </td> 
+                            		<tr  ng-repeat="h in dd | orderBy : '-id'">
+                            			<td>{{h.id}}  </td> 
+                            			<td>{{h.leaves}} </td>                       	
+                            			<td> {{h.start }} </td> 
+                            			<td>  {{h.ends}}</td> 
+                            			<td> {{h.days}} </td> 
+                            			<td>  {{h.desc}}</td> 
 
                             		</tr>
 

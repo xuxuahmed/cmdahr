@@ -6,7 +6,7 @@
             <h5>Record Card Number: {{user[0].RCN}} </h5>
             <h5>Designation </h5><hr>                         
         </div>
-        
+      
 
         <div class="card-body card-padding">
        
@@ -29,16 +29,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat = "year in staffD">                    
+                    <tr ng-repeat = "year in arrayLeaves">                    
                         
-                        <td>{{ year.year1 }}</td>
+                        <td>{{ year.year1}}</td>
                         <td>{{ year.year2}}</td>
                         <td>{{ year.AL}}</td>
-                        <td>{{ year.SL }} <font color="#FF3300"></font></td>
+                        <td>{{ year.l1[1].Leaves }} <font color="#FF3300"></font></td>
                         
                     </tr>
                 </tbody>
-            </table>
+            </table>            
         </div>
     </div>
 

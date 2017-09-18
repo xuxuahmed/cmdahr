@@ -38,11 +38,8 @@ class holidayController extends Controller
     public function isHoliday($year)
     {
         return holiday::select ("*") 
-                ->wherebetween ('HolidayDate','LIKE','%'.$year.'%')
-                ->get();
-
-
-                
+                ->where ('HolidayDate','LIKE','%'.$year.'%')
+                ->get();                
     }
 
     public function index()
@@ -70,19 +67,15 @@ class holidayController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $this->validate($request, [
-            'HolidayDate' => 'bail|required|unique:holiday',
-            'HolidayReason' => 'required',
-        ]);
+    {  
 
-        $holidayDate = Input::get('HolidayDate');
-        $holidayReason = Input::get('HolidayReason');
 
-        $create = holiday::create(array(
-            'HolidayDate' =>  $holidayDate,
-            'HolidayReason' => $holidayReason
-        ));
+        $newDay = new holiday;
+ 
+          $newDay->HolidayDate = $request->HolidayDate;
+           $newDay->HolidayReason = $request->HolidayReason;
+ 
+          $newDay->save();
     }
 
     /**
